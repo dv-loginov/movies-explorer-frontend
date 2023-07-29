@@ -1,0 +1,35 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.header__container {
+  max-width: 1140px;
+  min-width: 320px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.header_landing {
+  background-color: #073042;
+}
+
+.header_app {
+  background-color: #202020;
+}
+
+@media screen and (max-width: 1139px) {
+  .header__container {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header__container {
+    padding: 0 14px;
+  }
+}

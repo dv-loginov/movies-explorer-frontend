@@ -1,0 +1,31 @@
+.nav-tab {
+  margin: 21px 0;
+}
+
+.nav-tab__link {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-decoration: none;
+  padding: 8px 20px;
+  margin-left: 10px;
+  color: #FFF;
+  transition: all ease-in-out 250ms;
+}
+
+.nav-tab__link:hover {
+  color: #000;
+  background-color: #3DDC84;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 640px) {
+  .header__container {
+    padding: 0 14px;
+  }
+  .nav-tab__link {
+    font-size: 10px;
+    padding: 5px 12px;
+    margin-left: 2px;
+  }
+}

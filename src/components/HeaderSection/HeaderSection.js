@@ -1,10 +1,10 @@
 import './HeaderSection.css';
 
-const HeaderSection = () => {
+const HeaderSection = ({name}) => {
   return (
-    <div>
-      
-    </div>
+    <h2 className='header-section'>
+      { name }
+    </h2>
   );
 };
 

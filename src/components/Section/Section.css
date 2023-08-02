@@ -1,0 +1,35 @@
+.section {
+    display: flex;
+    justify-content: center;
+}
+
+.section__container {
+    max-width: 1140px;
+    min-width: 320px;
+    width: 100%;
+}
+
+.section_promo {
+  background-color: #073042;
+  padding: 75px 0;
+}
+
+.section_about-project {}
+
+@media screen and (max-width: 1139px) {
+  .section_promo {
+    padding: 75px 30px 75px 30px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .section_promo {
+    padding: 140px 0 75px 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .section_promo {
+    padding: 70px 0 30px 0;
+  }
+}

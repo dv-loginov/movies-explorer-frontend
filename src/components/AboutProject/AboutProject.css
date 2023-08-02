@@ -1,0 +1,15 @@
+.about-project {
+  background-color: #202020;
+  display: flex;
+  justify-content: center;
+}
+
+.about-project__container {
+  max-width: 1140px;
+  min-width: 320px;
+  width: 100%;
+  /*display: flex;*/
+  /*justify-content: space-between;*/
+  margin-top: 110px;
+  padding-bottom: 110px;
+}

@@ -4,17 +4,17 @@
 .about-project__cards {
   display: flex;
   margin-top: 70px;
-  gap: 40px;
+  gap: 51px;
 }
 
 .about-project__card {
-
 }
 
 .about-project__card-title {
   margin: 0;
   font-size: 20px;
   font-weight: 400;
+  letter-spacing: -0.8px;
 }
 
 .about-project__card-subtitle {
@@ -47,7 +47,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 9px 0;
+  padding: 11px 0;
 }
 
 .about-project__cell_short {

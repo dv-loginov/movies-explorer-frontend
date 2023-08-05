@@ -2,8 +2,9 @@
   font-size: 22px;
   font-weight: 400;
   margin: 0;
-  padding-bottom: 23px;
+  padding-bottom: 24px;
   border-bottom: solid 1px #DADADA;
+  letter-spacing: -0.88px;
 }
 
 @media screen and (max-width: 480px) {

@@ -11,27 +11,27 @@
 
 .section_promo {
   background-color: #073042;
-  padding: 150px 0;
+  padding: 150px 0 74px 0;
 }
 
 .section_about-project {
   background-color: #202020;
-  padding: 110px 0;
+  padding: 110px 0 100px 0;
 }
 
 .section_techs {
   background-color: #272727;
-  padding: 100px 0;
+  padding: 103px 0 100px 0;
 }
 
 .section_about-me {
   background-color: #202020;
-  padding: 110px 0 0 0;
+  padding: 95px 0 0 0;
 }
 
 .section_portfolio {
   background-color: #202020;
-  padding: 100px 0 125px 0;
+  padding: 85px 0 107px 0;
 }
 
 @media screen and (max-width: 1139px) {

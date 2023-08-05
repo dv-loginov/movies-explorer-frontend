@@ -16,7 +16,7 @@ const AboutMe = () => {
             После того, как прошёл курс по веб-разработке, начал заниматься
             фриланс-заказами и ушёл с постоянной работы.
           </h4>
-          <a href="/" className="about-me__link">GitHub</a>
+          <a href="/" className="about-me__link">Github</a>
         </div>
         <img className="about-me__photo" src={photo} alt="фото"/>
       </div>

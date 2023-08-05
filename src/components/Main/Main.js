@@ -28,8 +28,6 @@ const Main = () => {
         <Section name = 'portfolio'>
           <Portfolio />
         </Section>
-
-
       </main>
       <Footer />
     </>

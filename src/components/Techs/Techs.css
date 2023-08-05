@@ -51,6 +51,11 @@
     margin-top: 22px;
     font-size: 12px;
     line-height: 18px;
+    letter-spacing: -0.48px;
+  }
+
+  .techs__list{
+    margin-top: 83px;
   }
 
   .techs__list-item {

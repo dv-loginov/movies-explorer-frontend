@@ -60,8 +60,26 @@
 }
 
 @media screen and (max-width: 800px) {
+  .about-project__cell {
+    padding: 10px 0;
+  }
+
   .about-project__cell_short {
     max-width: 140px;
+  }
+
+  .about-project__cards {
+    gap: 38px;
+  }
+
+  .about-project__card-subtitle {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 23px 0 0 0;
+  }
+
+  .about-project__lasting {
+    margin-top: 94px;
   }
 }
 
@@ -71,6 +89,7 @@
     gap: 56px;
     flex-direction: column;
   }
+
   .about-project__card-title {
     font-size: 18px;
   }

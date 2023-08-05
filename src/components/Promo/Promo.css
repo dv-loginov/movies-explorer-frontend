@@ -71,6 +71,7 @@
     margin-top: 48px;
     text-align: center;
     font-size: 40px;
+    line-height: 50px;
   }
 
   .promo__subtitle {
@@ -85,9 +86,6 @@
 }
 
 @media screen and (max-width: 500px) {
-  /*.promo__container {*/
-  /*  margin-top: 70px;*/
-  /*}*/
 
   .promo__logo {
     width: 210px;

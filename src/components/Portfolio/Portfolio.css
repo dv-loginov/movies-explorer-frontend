@@ -37,6 +37,11 @@
   line-height: 50px;
   letter-spacing: -1.2px;
   margin-top: 1px;
+  transition: opacity 250ms ease-out;
+}
+
+.portfolio__link:hover {
+  opacity: .7;
 }
 
 .portfolio__ico {
@@ -67,5 +72,16 @@
   .portfolio__ico {
     font-size: 18px;
     line-height: 28px;
+    letter-spacing: -0.72px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .portfolio__list {
+    margin: 24px 0 0 0;
+  }
+
+  .portfolio__link {
+    padding: 19px 0;
   }
 }

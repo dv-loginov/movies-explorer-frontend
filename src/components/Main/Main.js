@@ -7,11 +7,16 @@ import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
+import Logo from '../Logo/Logo';
+import NavNoAuth from '../NavNoAuth/NavNoAuth';
 
 const Main = () => {
   return (
     <>
-      <Header/>
+      <Header type='landing'>
+        <Logo />
+        <NavNoAuth />
+      </Header>
       <main className='main'>
         <Section name = 'promo'>
           <Promo />

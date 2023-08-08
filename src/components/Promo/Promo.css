@@ -34,11 +34,13 @@
   text-decoration: none;
   color: #FFF;
   margin-top: 146px;
-  transition: opacity ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
 }
 
 .promo__btn:hover {
-  opacity: .8;
+  color: #000;
+  background-color: #3DDC84;
+  border-color: #000;
 }
 
 .promo__logo {
@@ -96,6 +98,7 @@
     margin-top: 44px;
     font-size: 30px;
     line-height: 38px;
+    letter-spacing: -1.2px;
   }
 
   .promo__subtitle {

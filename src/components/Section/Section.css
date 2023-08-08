@@ -84,16 +84,16 @@
     padding: 60px 18px 70px 18px;
   }
 
-  .section_about-me{
+  .section_about-me {
     padding: 70px 14px 0 14px;
   }
+
   .section_portfolio {
-    padding: 70px 14px 70px 14px;
+    padding: 17px 14px 51px 14px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .section_promo,
   .section_about-project,
   .section_techs,
   .section_about-me,

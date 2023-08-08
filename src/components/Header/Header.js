@@ -1,13 +1,11 @@
 import './Header.css'
-import Logo from '../Logo/Logo';
-import NavTab from '../NavTab/NavTab';
 
-const Header = () => {
+const Header = (props) => {
+  const type = props.type === 'landing' ? 'landing' : 'app';
   return (
-    <header className='header header_landing'>
+    <header className={ `header header_${ type }` }>
       <div className="header__container">
-        <Logo />
-        <NavTab />
+        { props.children }
       </div>
 
     </header>

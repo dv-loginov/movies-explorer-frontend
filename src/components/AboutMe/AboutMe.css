@@ -110,8 +110,9 @@
 
 
   .about-me__name {
-    margin-top: 40px;
+    margin-top: 19px;
     font-size: 30px;
+    letter-spacing: -1.2px;
   }
 
   .about-me__title {

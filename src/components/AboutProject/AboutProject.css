@@ -85,19 +85,29 @@
 
 @media screen and (max-width: 600px) {
   .about-project__cards {
-    margin-top: 60px;
-    gap: 56px;
+    margin-top: 62px;
+    gap: 59px;
     flex-direction: column;
   }
 
   .about-project__card-title {
     font-size: 18px;
+    letter-spacing: -0.72px;
   }
 
   .about-project__card-subtitle {
     font-size: 11px;
     line-height: 16px;
     margin: 16px 0 0 0;
+  }
+
+  .about-project__lasting {
+    margin-top: 60px;
+  }
+
+  .about-project__cell {
+    font-size: 11px;
+    padding: 11px 0;
   }
 }
 

@@ -1,6 +1,7 @@
 import './AboutMe.css';
 import HeaderSection from '../HeaderSection/HeaderSection';
 import photo from '../../images/photo.png';
+import { Link } from 'react-router-dom';
 const AboutMe = () => {
   return (
     <div className='about-me'>
@@ -16,7 +17,9 @@ const AboutMe = () => {
             После того, как прошёл курс по веб-разработке, начал заниматься
             фриланс-заказами и ушёл с постоянной работы.
           </h4>
-          <a href="/" className="about-me__link">Github</a>
+          <Link target="_blank" className="about-me__link" to='https://github.com/dv-loginov'>
+            Github
+          </Link>
         </div>
         <img className="about-me__photo" src={photo} alt="фото"/>
       </div>

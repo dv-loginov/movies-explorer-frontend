@@ -1,0 +1,54 @@
+.nav-auth {
+position: relative;
+}
+
+.nav-auth__menu {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.nav-auth__main {
+  display: none;
+}
+
+.nav-auth__film {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-auth__account {
+}
+
+.nav-auth__link {
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.nav-auth__link_with-icon {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+
+.nav-auth__link_active {
+  font-weight: 500;
+}
+
+.nav-auth__account-ico {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: #313131 url("../../images/ico-account.svg") no-repeat center;
+}
+
+.nav-auth__burger-ico {
+  display: none;
+}
+
+.nav-auth__close-ico {
+  display: none;
+}

@@ -1,4 +1,5 @@
 import './Portfolio.css';
+import { Link } from 'react-router-dom';
 
 const Portfolio = () => {
   return (
@@ -6,19 +7,19 @@ const Portfolio = () => {
       <h2 className="portfolio__header">Портфолио</h2>
       <ul className='portfolio__list'>
         <li className="portfolio__item">
-          <a href="/" className="portfolio__link">Статичный сайт
+          <Link className='portfolio__link' to='/'>Статичный сайт
             <div className="portfolio__ico">↗</div>
-          </a>
+          </Link>
         </li>
         <li className="portfolio__item">
-          <a href="/" className="portfolio__link">Адаптивный сайт
+          <Link className='portfolio__link' to='/'>Адаптивный сайт
             <div className="portfolio__ico">↗</div>
-          </a>
+          </Link>
         </li>
         <li className="portfolio__item">
-          <a href="/" className="portfolio__link">Одностраничное приложение
+          <Link className='portfolio__link' to='/'>Одностраничное приложение
             <div className="portfolio__ico">↗</div>
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

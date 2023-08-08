@@ -1,4 +1,5 @@
 import './Promo.css';
+import { Link } from 'react-router-dom';
 
 const Promo = () => {
   return (
@@ -10,7 +11,9 @@ const Promo = () => {
         <span className="promo__subtitle">
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
         </span>
-        <a href="/" className="promo__btn">Узнать больше</a>
+        <Link className="promo__btn" to='/'>
+          Узнать больше
+        </Link>
       </div>
       <div className="promo__logo"></div>
     </div>

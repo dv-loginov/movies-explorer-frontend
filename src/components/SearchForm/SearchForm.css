@@ -1,0 +1,119 @@
+.search-form {
+  padding-top: 144px;
+  max-width: 1140px;
+  min-width: 320px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(170, 170, 170, .2);
+  padding-bottom: 54px;
+}
+
+.search-form__input-warp {
+  box-sizing: border-box;
+  border: 1.5px solid rgba(170, 170, 170, .2);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.search-form__input {
+  width: 100%;
+  color: #8B8B8B;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
+  background-color: #202020;
+  border: none;
+  border-radius: 5px;
+  padding-left: 15px;
+}
+
+.search-form__input:hover{
+  background-color: #303030;
+}
+.search-form__input:focus{
+  outline: none;
+  box-shadow: 0 0 0 2px #4285F4;
+}
+.search-form__input:active {
+  color: #eee;
+}
+
+.search-form__button {
+  cursor: pointer;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  width: 100px;
+  height: 52px;
+  border-radius: 5px;
+  background: #4285F4;
+  border: none;
+}
+
+.search-form__checkbox-wrap {
+  position: relative;
+  /*display: block;*/
+  display: flex;
+  justify-content: flex-start;
+  gap: 14px;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 26px;
+}
+
+.search-form__checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.search-form__checkbox-mark {
+  display: inline-block;
+  position: relative;
+  border-radius: 25px;
+}
+
+.search-form__checkbox-mark:before,
+.search-form__checkbox-mark:after{
+  content: "";
+  position: absolute;
+  transition: all 0.5s ease;
+}
+
+.search-form__checkbox-mark{
+  background: #343434;
+  width: 36px;
+  height: 20px;
+  /*padding: 5px;*/
+  box-sizing: border-box;
+}
+
+.search-form__checkbox-mark:before{
+  top: 6px;
+  left: 5px;
+  width: 8px;
+  height: 8px;
+  background: #A0A0A0;
+  border-radius: 50%;
+}
+
+.search-form__checkbox:checked ~ .search-form__checkbox-mark{
+  background: #2BE080;
+}
+
+.search-form__checkbox:checked ~ .search-form__checkbox-mark:before{
+  left: 22px;
+  background: #FFF;
+}
+
+.search-form__checkbox-label {
+  color: #FFF;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+}

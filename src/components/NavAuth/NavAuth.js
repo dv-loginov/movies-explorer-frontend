@@ -18,8 +18,8 @@ const NavAuth = () => {
           </Link>
         </div>
       </div>
-      <div className="nav-auth__burger-ico"></div>
-      <div className="nav-auth__close-ico"></div>
+      <button className="nav-auth__burger-ico"></button>
+      <button className="nav-auth__close-ico"></button>
     </nav>
   );
 };

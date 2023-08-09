@@ -1,0 +1,11 @@
+.saved-movies {
+  flex: 1 0 auto;
+  background-color: #202020;
+}
+
+.saved-movies__container {
+  max-width: 1140px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}

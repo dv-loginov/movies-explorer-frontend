@@ -1,8 +1,8 @@
 .search-form {
   padding-top: 144px;
-  max-width: 1140px;
-  min-width: 320px;
-  margin: 0 auto;
+  /*max-width: 1140px;*/
+  /*min-width: 320px;*/
+  /*margin: 0 auto;*/
   border-bottom: 1px solid rgba(170, 170, 170, .2);
   padding-bottom: 54px;
 }
@@ -116,4 +116,11 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 18px;
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 320px) {
+
 }

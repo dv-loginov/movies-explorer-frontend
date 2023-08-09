@@ -17,8 +17,3 @@ const SearchForm = () => {
 };
 
 export default SearchForm;
-
-// <label className="checkbox_wrap">
-//   <input type="checkbox" name="checkbox" className="checkbox_inp">
-//     <span className="checkbox_mark"></span>
-// </label>

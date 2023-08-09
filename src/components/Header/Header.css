@@ -4,6 +4,7 @@
   justify-content: center;
   flex: 0 0 auto;
   position: fixed;
+  z-index: 2;
 }
 
 .header__container {

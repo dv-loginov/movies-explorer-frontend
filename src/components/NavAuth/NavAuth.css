@@ -24,7 +24,7 @@ position: relative;
   text-decoration: none;
   color: #FFF;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 18px;
 }
 
@@ -47,6 +47,11 @@ position: relative;
 
 .nav-auth__burger-ico {
   display: none;
+  width: 44px;
+  height: 44px;
+  background: url("../../images/ico-menu.svg") no-repeat center;
+  cursor: pointer;
+  border: none;
 }
 
 .nav-auth__close-ico {
@@ -54,8 +59,17 @@ position: relative;
 }
 
 @media screen and (max-width: 768px) {
+  .nav-auth__burger-ico {
+    display: block;
+  }
+  .nav-auth__menu {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 320px) {
-
+  .nav-auth__burger-ico {
+    width: 43px;
+    background: url("../../images/ico-menu-320.svg") no-repeat center;
+  }
 }

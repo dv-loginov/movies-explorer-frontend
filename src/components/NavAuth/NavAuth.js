@@ -13,7 +13,7 @@ const NavAuth = () => {
           <Link className='nav-auth__link' to='/saved-movies'>Сохраненные фильмы</Link>
         </div>
         <div className="nav-auth__account">
-          <Link className='nav-auth__link nav-auth__link_with-icon' to='/profile'>Аккунт
+          <Link className='nav-auth__link nav-auth__link_with-icon' to='/profile'>Аккаунт
             <div className="nav-auth__account-ico"></div>
           </Link>
         </div>

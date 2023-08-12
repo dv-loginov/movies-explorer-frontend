@@ -28,12 +28,6 @@ const SavedMovies = () => {
       cover: 'https://i0.wp.com/css-tricks.com/wp-content/uploads/2015/02/cover-and-contain.jpg?ssl=1',
       saved: true,
     },
-    {
-      name: 'В погоне за Бенкси',
-      time: '2 часа 45 минут',
-      cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKRzHHirDMQU_v0RHsILVKVt2O2RzpYR_EA_wiH5XaZQiOO_SBqb_8clGzD2cNXMTFoB0&usqp=CAU',
-      saved: true,
-    }
   ];
 
   const testCards = [...setTest];

@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 
 const MoviesCard = ({name, time, cover, saved}) => {
   let location = useLocation();
-  console.log(location.pathname);
   const btnClassMod = location.pathname === '/movies'
     ? saved && 'movies-card__btn_mark-unmark'
     : 'movies-card__btn_mark-delete';

@@ -1,0 +1,34 @@
+.footer-page-auth {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.footer-page-auth__content__question,
+.footer-page-auth__content__link{
+  font-size: 14px;
+  font-weight: 400;
+}
+.footer-page-auth__content__question {
+  color: #8B8B8B;
+  padding-right: 7px;
+}
+
+.footer-page-auth__content__link{
+  color: #4285F4;
+  text-decoration: none;
+  transition: opacity 250ms ease-out;
+}
+
+.footer-page-auth__content__link:hover{
+  opacity: .7;
+}
+
+@media screen and (max-width: 410px) {
+  .footer-page-auth__content__question,
+  .footer-page-auth__content__link{
+    font-size: 12px;
+  }
+  .footer-page-auth {
+    margin-top: 12px;
+  }
+}

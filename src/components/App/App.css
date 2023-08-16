@@ -3,7 +3,7 @@
   color: #FFF;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  background-color: #202020;
   min-height: 100vh;
   min-width: 320px;
 }

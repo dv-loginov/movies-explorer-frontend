@@ -1,0 +1,47 @@
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.input__label {
+  color: #8B8B8B;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.input__field {
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #202020;
+  border: none;
+  padding: 0 0 10px 0;
+  margin-top: 5px;
+  border-bottom: solid 1px #424242;
+}
+
+.input__field:hover {
+  border-bottom: solid 1px #FFF;
+}
+
+.input__field:focus {
+  outline: none;
+  border-bottom: solid 1px #4285F4;
+}
+
+.input__field:active {
+  color: #eee;
+}
+
+.input__field:invalid {
+  color: #EE3465;
+}
+
+/*@media screen and (max-width: 410px) {*/
+/*  .input {*/
+/*    max-width: 260px;*/
+/*  }*/
+/*}*/
+
+
+

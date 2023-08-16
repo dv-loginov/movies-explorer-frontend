@@ -102,7 +102,6 @@
     display: block;
   }
 
-
   .nav-auth__cover {
     position: fixed;
     left: 0;
@@ -172,10 +171,15 @@
 
 @media screen and (max-width: 320px) {
   .nav-auth__burger-ico {
+
     width: 43px;
     background: url("../../images/ico-menu-320.svg") no-repeat center;
   }
 
+  .nav-auth__burger-ico{
+    top: 14px;
+    right: 14px;
+  }
   .nav-auth__close-ico {
     top: 18px;
     right: 18px;

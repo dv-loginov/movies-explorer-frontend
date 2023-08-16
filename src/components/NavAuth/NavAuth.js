@@ -10,10 +10,6 @@ const NavAuth = () => {
     console.log('toggle menu');
     setIsMenuOpened(!isMenuOpened);
   }
-  //
-  // const handleClickClose = () => {
-  //   console.log('open menu');
-  // }
 
   return (
     <nav className='nav-auth'>

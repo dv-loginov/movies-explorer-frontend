@@ -1,0 +1,14 @@
+.register {
+
+}
+
+.register__btn {
+  text-align: center;
+  margin-top: 128px;
+}
+
+@media screen and (max-width: 410px) {
+  .register__btn {
+    margin-top: 217px;
+  }
+}

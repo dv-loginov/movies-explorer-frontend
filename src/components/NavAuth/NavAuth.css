@@ -13,6 +13,8 @@
 }
 
 .nav-auth__film {
+  list-style: none;
+  padding: 0;
   display: flex;
   gap: 20px;
 }
@@ -55,15 +57,20 @@
 }
 
 .nav-auth__burger-ico {
-  position: fixed;
-  top: 13px;
-  right: 31px;
+  position: absolute;
+  bottom: -23px;
+  right: 0;
   display: none;
   width: 44px;
   height: 44px;
   background: url("../../images/ico-menu.svg") no-repeat center;
   cursor: pointer;
   border: none;
+  transition: opacity 250ms ease-out;
+}
+
+.nav-auth__burger-ico:hover {
+  opacity: .7;
 }
 
 .nav-auth__close-ico {
@@ -146,6 +153,11 @@
     background: url("../../images/ico-close.svg") no-repeat center;
     cursor: pointer;
     border: none;
+    transition: opacity 250ms ease-out;
+  }
+
+  .nav-auth__close-ico:hover {
+    opacity: .7;
   }
 }
 
@@ -170,14 +182,13 @@
 
 @media screen and (max-width: 320px) {
   .nav-auth__burger-ico {
-
     width: 43px;
     background: url("../../images/ico-menu-320.svg") no-repeat center;
   }
 
   .nav-auth__burger-ico{
-    top: 14px;
-    right: 14px;
+    top: -23px;
+    right: -1px;
   }
   .nav-auth__close-ico {
     top: 18px;

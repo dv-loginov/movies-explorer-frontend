@@ -13,8 +13,8 @@ const MoviesCard = ({name, time, cover, saved}) => {
         <div className="movies-card__name" title={ name }>{ name }</div>
         <div className="movies-card__time" title={ time }>{ time }</div>
       </div>
-      <img src={ cover } alt="обложка фильма" className="movies-card__cover"/>
-      <button className={ `movies-card__btn ${ btnClassMod }` }>{ saved ? null : 'Сохранить' }</button>
+      <img src={ cover } alt={`обложка фильма ${name}`} className="movies-card__cover"/>
+      <button type='button' className={ `movies-card__btn ${ btnClassMod }` }>{ saved ? null : 'Сохранить' }</button>
     </li>
   );
 };

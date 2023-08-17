@@ -35,50 +35,52 @@ const PageRegister = () => {
   return (
     <ContentAuthPage>
       <HeaderPageAuth/>
-      <main className="register">
-        <AuthForm
-          name='register'
-          onSubmit={ handleOnSubmit }>
-          <Input
-            type='text'
-            label='Имя'
-            id='userName'
-            name='userName'
-            onChange={ handleChangeName }
-            placeholder='Имя пользователя'
-            min='2'
-            max='30'
-            required={ null }
-            value={ name || 'Виталий' }
-          />
-          <InputError text=' '/>
-          <Input
-            type='email'
-            label='E-mail'
-            id='email'
-            name='email'
-            onChange={ handleChangeEmail }
-            placeholder='Почта пользователя'
-            required={ 'required' }
-            value={ email || "pochta@yandex.ru " }
-          />
-          <InputError text=' '/>
-          <Input
-            type='password'
-            label='Пароль'
-            id='password'
-            name='password'
-            onChange={ handleChangePassword }
-            placeholder='Пароль пользователя'
-            min='8'
-            required={ 'required' }
-            value={ password }
-          />
-          <InputError text='Что-то пошло не так ...'/>
-          <div className="register__btn">
-            <ButtonAuthSubmit text="Зарегистрироваться"/>
-          </div>
-        </AuthForm>
+      <main>
+        <section className="register">
+          <AuthForm
+            name='register'
+            onSubmit={ handleOnSubmit }>
+            <Input
+              type='text'
+              label='Имя'
+              id='userName'
+              name='userName'
+              onChange={ handleChangeName }
+              placeholder='Имя пользователя'
+              min='2'
+              max='30'
+              required={ null }
+              value={ name || 'Виталий' }
+            />
+            <InputError text=' '/>
+            <Input
+              type='email'
+              label='E-mail'
+              id='email'
+              name='email'
+              onChange={ handleChangeEmail }
+              placeholder='Почта пользователя'
+              required={ 'required' }
+              value={ email || "pochta@yandex.ru " }
+            />
+            <InputError text=' '/>
+            <Input
+              type='password'
+              label='Пароль'
+              id='password'
+              name='password'
+              onChange={ handleChangePassword }
+              placeholder='Пароль пользователя'
+              min='8'
+              required={ 'required' }
+              value={ password }
+            />
+            <InputError text='Что-то пошло не так ...'/>
+            <div className="register__btn">
+              <ButtonAuthSubmit text="Зарегистрироваться"/>
+            </div>
+          </AuthForm>
+        </section>
       </main>
       <FooterPageAuth
         question='Уже зарегистрированы?'

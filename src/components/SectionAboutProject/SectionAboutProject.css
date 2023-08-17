@@ -5,6 +5,8 @@
   display: flex;
   margin-top: 70px;
   gap: 51px;
+  padding: 0;
+  list-style: none;
 }
 
 .about-project__card {

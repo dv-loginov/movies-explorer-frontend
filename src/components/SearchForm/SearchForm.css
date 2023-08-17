@@ -55,6 +55,11 @@
   background: #4285F4;
   border: none;
   box-sizing: border-box;
+  transition: opacity 250ms ease-out;
+}
+
+.search-form__button:hover {
+  opacity: .8;
 }
 
 .search-form__checkbox-wrap {
@@ -75,10 +80,17 @@
   z-index: 1;
 }
 
+
 .search-form__checkbox-mark {
   display: inline-block;
   position: relative;
   border-radius: 25px;
+  transition: all 250ms ease-out;
+}
+
+.search-form__checkbox-mark:hover {
+  opacity: .5;
+  box-shadow: -20px -20px 13px -2px rgba(255, 255, 255, 0.2) inset
 }
 
 .search-form__checkbox-mark:before,

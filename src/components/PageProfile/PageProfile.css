@@ -1,5 +1,5 @@
 .profile {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,7 +12,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin: 0 auto 0;
+  margin: 0 auto;
 }
 
 .profile__main {
@@ -30,7 +30,7 @@
   text-align: center;
 }
 
-.profile__data {
+.profile__form {
   margin-top: 123px;
 }
 
@@ -42,7 +42,7 @@
 
 .profile__user-name {
   border-bottom: solid 1px #424242;
-  padding-bottom: 18px;
+  padding-bottom: 13px;
 }
 
 .profile__user-email {
@@ -50,8 +50,7 @@
 }
 
 .profile__label,
-.profile__name,
-.profile__email {
+.profile__input {
   color: #FFF;
   font-size: 11px;
   margin: 0;
@@ -61,14 +60,36 @@
   font-weight: 500;
 }
 
-.profile__name,
-.profile__email {
+.profile__input {
   font-weight: 400;
+  background-color: #202020;
+  border: none;
+  text-align: right;
+  max-width: 80%;
+  width: 100%;
+}
+
+.profile__input:hover {
+  background-color: #424242;
+}
+
+.profile__input:focus {
+  outline: none;
+  border-bottom: solid 1px #3DDC84;
+  /*#4285F4;*/
+}
+
+.profile__input:active {
+  color: #eee;
+}
+
+.profile__input:invalid {
+  color: #EE3465;
 }
 
 .profile__footer {
   text-align: center;
-  margin-top: 217px;
+  margin-top: 215px;
 }
 
 .profile__link,
@@ -104,20 +125,30 @@
 
 @media screen and (max-width: 768px) {
 
+  .profile {
+    height: calc(100vh - 74px);;
+  }
+
+
   .profile__main {
     margin-top: 46px;
   }
 
-  .profile__data {
+  .profile__form {
     margin-top: 96px;
   }
 
   .profile__footer {
-    margin-top: 210px;
+    margin-top: 206px;
+    padding-bottom: 74px;
   }
 }
 
 @media screen and (max-width: 440px) {
+  .profile {
+
+  }
+
   .profile__link,
   .profile__btn {
     font-size: 12px;
@@ -125,17 +156,20 @@
 
   .profile__container {
     max-width: 260px;
+    justify-content: space-between;
+    height: 100%;
   }
 
   .profile__main {
-    margin-top: 106px;
+    margin-top: 71px;
   }
 
-  .profile__data {
+  .profile__form {
     margin-top: 80px;
   }
 
   .profile__footer {
-    margin-top: 379px;
+    margin: 0;
+    padding-bottom: 41px;
   }
 }

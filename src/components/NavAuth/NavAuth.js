@@ -15,11 +15,17 @@ const NavAuth = () => {
     <nav className='nav-auth'>
       <div className={ `nav-auth__cover ${ isMenuOpened ? "nav-auth__cover_opened " : "" }` }></div>
       <div className={ `nav-auth__menu ${ isMenuOpened ? "nav-auth__menu_opened" : "" }` }>
-        <div className="nav-auth__film">
-          <Link className='nav-auth__link nav-auth__link_main' to='/'>Главная</Link>
-          <Link className='nav-auth__link nav-auth__link_active' to='/movies'>Фильмы</Link>
-          <Link className='nav-auth__link' to='/saved-movies'>Сохраненные фильмы</Link>
-        </div>
+        <ul className="nav-auth__film">
+          <li>
+            <Link className='nav-auth__link nav-auth__link_main' to='/'>Главная</Link>
+          </li>
+          <li>
+            <Link className='nav-auth__link nav-auth__link_active' to='/movies'>Фильмы</Link>
+          </li>
+          <li>
+            <Link className='nav-auth__link' to='/saved-movies'>Сохраненные фильмы</Link>
+          </li>
+        </ul>
         <div className="nav-auth__account">
           <Link className='nav-auth__link nav-auth__link_with-icon' to='/profile'>Аккаунт
             <div className="nav-auth__account-ico"></div>

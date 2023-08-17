@@ -35,8 +35,12 @@
   display: block;
   text-align: center;
   margin-top: 186px;
+  transition: opacity 250ms ease-out;
 }
 
+.page404__link:hover {
+  opacity: .7;
+}
 
 @media screen and (max-width: 320px) {
   .page404__title {

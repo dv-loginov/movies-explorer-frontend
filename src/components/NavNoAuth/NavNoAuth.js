@@ -10,7 +10,7 @@ const NavNoAuth = () => {
         Регистрация
       </Link>
       <Link
-        className='nav-no-auth__link'
+        className='nav-no-auth__link nav-no-auth__link_active'
         to='/sign-in'>
         Войти
       </Link>

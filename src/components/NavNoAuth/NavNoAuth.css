@@ -13,10 +13,20 @@
   transition: all ease-in-out 250ms;
 }
 
-.nav-no-auth__link:hover {
+.nav-no-auth__link_active {
   color: #000;
   background-color: #3DDC84;
   border-radius: 3px;
+}
+
+/*.nav-no-auth__link:hover {*/
+/*  color: #000;*/
+/*  background-color: #3DDC84;*/
+/*  border-radius: 3px;*/
+/*}*/
+
+.nav-no-auth__link:hover {
+  opacity: .7;
 }
 
 @media screen and (max-width: 640px) {

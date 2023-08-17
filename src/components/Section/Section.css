@@ -11,22 +11,22 @@
 
 .section_promo {
   background-color: #073042;
-  padding: 150px 0 74px 0;
+  padding: 75px 0 74px 0;
 }
 
 .section_about-project {
   background-color: #202020;
-  padding: 110px 0 100px 0;
+  padding: 112px 0 100px 0;
 }
 
 .section_techs {
   background-color: #272727;
-  padding: 103px 0 100px 0;
+  padding: 103px 0 84px 0;
 }
 
 .section_about-me {
   background-color: #202020;
-  padding: 95px 0 0 0;
+  padding: 110px 0 0 0;
 }
 
 .section_portfolio {
@@ -57,7 +57,7 @@
 
 @media screen and (max-width: 1100px) {
   .section_promo {
-    padding: 214px 0 75px 0;
+    padding: 141px 0 75px 0;
   }
 
   .section_techs {
@@ -69,11 +69,16 @@
     padding-top: 75px;
     padding-bottom: 73px;
   }
+
+  .section_about-me{
+    padding-top: 94px;
+  }
+
 }
 
 @media screen and (max-width: 500px) {
   .section_promo {
-    padding: 145px 0 30px 0;
+    padding: 71px 0 30px 0;
   }
 
   .section_about-project {
@@ -89,7 +94,7 @@
   }
 
   .section_portfolio {
-    padding: 17px 14px 51px 14px;
+    padding: 16px 14px 51px 14px;
   }
 }
 

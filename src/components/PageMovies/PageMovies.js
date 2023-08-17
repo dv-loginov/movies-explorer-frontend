@@ -45,8 +45,8 @@ const PageMovies = () => {
         <NavAuth/>
       </Header>
       <main className="movies">
+        <SearchForm/>
         <div className="movies__container">
-          <SearchForm/>
           <MoviesCardList cards={ testCards }/>
           <button className="movies__btn-next">Еще</button>
         </div>

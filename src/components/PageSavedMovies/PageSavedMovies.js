@@ -39,8 +39,8 @@ const PageSavedMovies = () => {
         <NavAuth/>
       </Header>
       <main className="saved-movies">
+        <SearchForm/>
         <div className="saved-movies__container">
-          <SearchForm/>
           <MoviesCardList cards={ testCards }/>
         </div>
       </main>

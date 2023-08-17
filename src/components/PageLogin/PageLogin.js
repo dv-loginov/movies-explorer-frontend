@@ -59,7 +59,7 @@ const PageLogin = () => {
       </main>
       <FooterPageAuth
         question='Еще не зарегистрированы?'
-        link='/sign-up'
+        link='/signup'
         linkText='Регистрация'/>
     </ContentAuthPage>
   );

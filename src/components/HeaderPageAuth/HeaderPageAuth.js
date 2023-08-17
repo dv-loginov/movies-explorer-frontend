@@ -4,7 +4,7 @@ import Logo from '../Logo/Logo';
 
 const HeaderPageAuth = () => {
   const location = useLocation();
-  const title = location.pathname === '/sign-up'
+  const title = location.pathname === '/signup'
     ? 'Добро пожаловать!'
     : 'Рады видеть!'
   return (

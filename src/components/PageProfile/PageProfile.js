@@ -30,7 +30,7 @@ const PageProfile = () => {
           </main>
           <footer className="profile__footer">
             <button className="profile__btn">Редактировать</button>
-            <Link to="/sign-out" className="profile__link">Выйти из аккаунта</Link>
+            <Link to="/signout" className="profile__link">Выйти из аккаунта</Link>
           </footer>
         </div>
       </div>

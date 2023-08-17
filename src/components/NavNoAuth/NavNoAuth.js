@@ -6,12 +6,12 @@ const NavNoAuth = () => {
     <nav className='nav-no-auth'>
       <Link
         className='nav-no-auth__link'
-        to='/sign-up'>
+        to='/signup'>
         Регистрация
       </Link>
       <Link
         className='nav-no-auth__link nav-no-auth__link_active'
-        to='/sign-in'>
+        to='/signin'>
         Войти
       </Link>
     </nav>

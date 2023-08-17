@@ -82,7 +82,7 @@ const PageRegister = () => {
       </main>
       <FooterPageAuth
         question='Уже зарегистрированы?'
-        link='/sign-in'
+        link='/signin'
         linkText='Войти'
       />
     </ContentAuthPage>

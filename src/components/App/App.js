@@ -16,8 +16,8 @@ const App = () => {
         <Route path='/movies' element={ <PageMovies/> }/>
         <Route path='/saved-movies' element={ <PageSavedMovies/> }/>
         <Route path='/profile' element={ <PageProfile/> }/>
-        <Route path='/sign-in' element={ <PageLogin/> }/>
-        <Route path='/sign-up' element={ <PageRegister/> }/>
+        <Route path='/signin' element={ <PageLogin/> }/>
+        <Route path='/signup' element={ <PageRegister/> }/>
         <Route path='*' element={ <Page404/> }/>
       </Routes>
     </div>

@@ -1,0 +1,25 @@
+.header-page-auth {
+  padding: 54px 0 40px 0;
+}
+
+.header-page-auth__title {
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 40px 0 0 0;
+  letter-spacing: .2px;
+}
+
+@media screen and (max-width: 410px) {
+
+  .header-page-auth {
+    padding: 38px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-page-auth__title {
+    margin: 33px 0 81px 0;
+  }
+}

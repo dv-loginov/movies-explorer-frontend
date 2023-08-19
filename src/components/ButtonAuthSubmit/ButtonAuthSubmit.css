@@ -1,0 +1,22 @@
+.button-auth-submit {
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 0 15px 0;
+  border-radius: 3px;
+  background: #4285F4;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: opacity 250ms ease-out;
+}
+
+.button-auth-submit:hover{
+  opacity: .8;
+}
+
+@media screen and (max-width: 410px) {
+  .button-auth-submit{
+    font-size: 12px;
+  }
+}

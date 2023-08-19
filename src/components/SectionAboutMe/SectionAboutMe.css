@@ -1,0 +1,139 @@
+.about-me__content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 66px;
+  gap: 20px;
+}
+
+.about-me__info {
+  max-width: 600px;
+}
+
+.about-me__name,
+.about-me__title,
+.about-me__subtitle {
+  margin: 0;
+}
+
+.about-me__name {
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+}
+
+.about-me__title {
+  margin-top: 18px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.about-me__subtitle {
+  margin-top: 26px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  max-width: 599px;
+}
+
+.about-me__link {
+  margin-top: 99px;
+  text-decoration: none;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 250ms ease-out;
+  display: block;
+}
+
+.about-me__link:hover {
+  opacity: .7;
+}
+
+.about-me__photo {
+  width: 270px;
+  height: 327px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about-me__title {
+    margin-top: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+  }
+
+  .about-me__subtitle {
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__info {
+    max-width: 364px;
+  }
+
+  .about-me__photo {
+    width: 255px;
+    height: 307px;
+  }
+
+  .about-me__link {
+    margin-top: 87px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .about-me__content {
+    flex-direction: column;
+  }
+  .about-me__photo {
+    align-self: center;
+    order: 1;
+  }
+
+  .about-me__info {
+    order: 2;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-me__content {
+    margin-top: 60px;
+  }
+
+
+  .about-me__name {
+    margin-top: 19px;
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .about-me__title {
+    margin-top: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  .about-me__subtitle {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__link {
+    margin-top: 40px;
+  }
+
+  .about-me__photo {
+    width: 292px;
+    height: 352px;
+  }
+
+}

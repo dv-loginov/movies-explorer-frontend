@@ -1,0 +1,108 @@
+.section {
+  display: flex;
+  justify-content: center;
+}
+
+.section__container {
+  max-width: 1140px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section_promo {
+  background-color: #073042;
+  padding: 75px 0 74px 0;
+}
+
+.section_about-project {
+  background-color: #202020;
+  padding: 112px 0 100px 0;
+}
+
+.section_techs {
+  background-color: #272727;
+  padding: 103px 0 84px 0;
+}
+
+.section_about-me {
+  background-color: #202020;
+  padding: 110px 0 0 0;
+}
+
+.section_portfolio {
+  background-color: #202020;
+  padding: 85px 0 107px 0;
+}
+
+@media screen and (max-width: 1139px) {
+  .section_promo,
+  .section_about-project,
+  .section_techs,
+  .section_about-me,
+  .section_portfolio {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .section_promo {
+    padding-top: 150px;
+    padding-bottom: 75px;
+  }
+
+  .section_about-project {
+    padding-top: 92px;
+    padding-bottom: 85px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .section_promo {
+    padding: 141px 0 75px 0;
+  }
+
+  .section_techs {
+    padding-top: 90px;
+    padding-bottom: 70px;
+  }
+
+  .section_portfolio {
+    padding-top: 75px;
+    padding-bottom: 73px;
+  }
+
+  .section_about-me{
+    padding-top: 94px;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  .section_promo {
+    padding: 71px 0 30px 0;
+  }
+
+  .section_about-project {
+    padding: 70px 18px;
+  }
+
+  .section_techs {
+    padding: 60px 18px 70px 18px;
+  }
+
+  .section_about-me {
+    padding: 70px 14px 0 14px;
+  }
+
+  .section_portfolio {
+    padding: 16px 14px 51px 14px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .section_about-project,
+  .section_techs,
+  .section_about-me,
+  .section_portfolio {
+    background-color: #202020;
+  }
+}

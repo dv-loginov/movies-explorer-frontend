@@ -1,0 +1,38 @@
+.nav-no-auth {
+  margin: 21px 0;
+}
+
+.nav-no-auth__link {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-decoration: none;
+  padding: 8px 20px;
+  margin-left: 10px;
+  color: #FFF;
+  transition: all ease-in-out 250ms;
+}
+
+.nav-no-auth__link_active {
+  color: #000;
+  background-color: #3DDC84;
+  border-radius: 3px;
+}
+
+/*.nav-no-auth__link:hover {*/
+/*  color: #000;*/
+/*  background-color: #3DDC84;*/
+/*  border-radius: 3px;*/
+/*}*/
+
+.nav-no-auth__link:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 640px) {
+  .nav-no-auth__link {
+    font-size: 10px;
+    padding: 5px 12px;
+    margin-left: 2px;
+  }
+}

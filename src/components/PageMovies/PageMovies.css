@@ -1,0 +1,67 @@
+.movies {
+  flex: 1 0 auto;
+  background-color: #202020;
+}
+
+.movies__container {
+  max-width: 1140px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+  box-sizing: border-box;
+}
+
+.movies__btn-next {
+  color: #FFF;
+  border: none;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 100%;
+  border-radius: 6px;
+  background: #2F2F2F;
+  padding: 11px 0 9px 0;
+  margin-top: 60px;
+  cursor: pointer;
+  transition: opacity 250ms ease-out;
+}
+
+.movies__btn-next:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 1140px) {
+  .movies__container {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movies__container {
+    margin: 0;
+    padding-bottom: 80px;
+  }
+
+  .movies__btn-next {
+    margin-top: 80px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movies__container {
+    padding: 0 14px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .movies__container {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .movies__container {
+    padding-bottom: 82px;
+  }
+}

@@ -2,13 +2,21 @@ import './PageProfile.css';
 import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
 import NavAuth from '../NavAuth/NavAuth';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import MainApi from '../../utils/MainApi';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 
-const PageProfile = () => {
+const PageProfile = ({handleExit}) => {
 
-  const [email, setEmail] = useState('pochta@yandex.ru');
-  const [name, setName] = useState('Виталий');
+  const currentUser = useContext(CurrentUserContext);
+
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+    setName(currentUser.name);
+    setEmail(currentUser.email);
+  }, [currentUser]);
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -22,6 +30,16 @@ const PageProfile = () => {
     event.preventDefault();
   }
 
+  const onClickExit = () => {
+    MainApi.exit()
+      .then((data) => {
+        console.log(data.message);
+        handleExit();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 
   return (
     <>
@@ -70,8 +88,14 @@ const PageProfile = () => {
             </section>
           </main>
           <footer className="profile__footer">
-            <button type="submit" form="profile-form" className="profile__btn">Редактировать</button>
-            <Link to="/signout" className="profile__link">Выйти из аккаунта</Link>
+            <button
+              type="submit"
+              form="profile-form"
+              className="profile__btn profile__btn_edit">Редактировать</button>
+            <button
+              onClick={ onClickExit }
+              type="button"
+              className="profile__btn profile__btn_exit">Выйти из аккаунта</button>
           </footer>
         </div>
       </div>

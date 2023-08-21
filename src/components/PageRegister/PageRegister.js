@@ -7,18 +7,17 @@ import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import ButtonAuthSubmit from '../ButtonAuthSubmit/ButtonAuthSubmit';
 import { useState } from 'react';
+import MainApi from '../../utils/MainApi';
 
-const PageRegister = () => {
+const PageRegister = ({handleRegister}) => {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChangeName = (event) => {
-    console.log(event.target.value)
     setName(event.target.value);
   };
-
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -30,6 +29,13 @@ const PageRegister = () => {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
+    MainApi.register({name, email, password,})
+      .then(() => {
+        handleRegister({email, password});
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   }
 
   return (
@@ -50,7 +56,7 @@ const PageRegister = () => {
               min='2'
               max='30'
               required={ null }
-              value={ name || 'Виталий' }
+              value={ name || '' }
             />
             <InputError text=' '/>
             <Input
@@ -61,7 +67,7 @@ const PageRegister = () => {
               onChange={ handleChangeEmail }
               placeholder='Почта пользователя'
               required={ 'required' }
-              value={ email || "pochta@yandex.ru " }
+              value={ email || '' }
             />
             <InputError text=' '/>
             <Input
@@ -75,8 +81,9 @@ const PageRegister = () => {
               required={ 'required' }
               value={ password }
             />
-            <InputError text='Что-то пошло не так ...'/>
+            <InputError text=' '/>
             <div className="register__btn">
+              <InputError text=' '/>
               <ButtonAuthSubmit text="Зарегистрироваться"/>
             </div>
           </AuthForm>

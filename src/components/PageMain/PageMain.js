@@ -17,7 +17,6 @@ const PageMain = ({isLoggedIn}) => {
       <Header type='landing'>
         <Logo/>
         { isLoggedIn ? <NavAuth/> : <NavNoAuth/> }
-        {/*<NavNoAuth />*/ }
       </Header>
       <main className='page-main'>
         <Section name='promo'>

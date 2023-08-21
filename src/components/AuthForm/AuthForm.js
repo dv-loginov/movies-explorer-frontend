@@ -6,6 +6,7 @@ const AuthForm = (props) => {
           className="auth-form"
           name={props.name}
           onSubmit={props.onSubmit}
+          noValidate={true}
     >
       {props.children}
     </form>

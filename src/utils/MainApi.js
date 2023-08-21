@@ -3,38 +3,38 @@ class MainApi {
     this._baseUrl = opt.baseUrl;
   }
 
-  // register({password, email}) {
-  //   return this._request('signup', {
-  //     method: 'POST',
-  //     headers: {"Accept": "application/json", "Content-Type": "application/json"},
-  //     credentials: 'include',
-  //     body: JSON.stringify({
-  //       password: password,
-  //       email: email,
-  //     })
-  //   });
-  // }
-  //
-  // authorize({password, email}) {
-  //   return this._request('signin', {
-  //     method: 'POST',
-  //     headers: {"Accept": "application/json", "Content-Type": "application/json"},
-  //     credentials: 'include',
-  //     body: JSON.stringify({
-  //       password: password,
-  //       email: email,
-  //     })
-  //   });
-  // }
-  //
-  // exit() {
-  //   return this._request('signout', {
-  //     method: 'POST',
-  //     headers: {"Accept": "application/json", "Content-Type": "application/json"},
-  //     credentials: 'include',
-  //   });
-  // }
+  register({name, email, password}) {
+    return this._request('signup', {
+      method: 'POST',
+      headers: {"Accept": "application/json", "Content-Type": "application/json"},
+      credentials: 'include',
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        password: password,
+      })
+    });
+  }
 
+  authorize({email, password}) {
+    return this._request('signin', {
+      method: 'POST',
+      headers: {"Accept": "application/json", "Content-Type": "application/json"},
+      credentials: 'include',
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      })
+    });
+  }
+
+  exit() {
+    return this._request('signout', {
+      method: 'POST',
+      headers: {"Accept": "application/json", "Content-Type": "application/json"},
+      credentials: 'include',
+    });
+  }
 
   getUser() {
     return this._request('users/me', {
@@ -63,4 +63,4 @@ const mainApi = new MainApi({
   baseUrl: 'http://localhost:3005',
 });
 
-export default mainApi ;
+export default mainApi;

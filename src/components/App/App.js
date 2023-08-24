@@ -24,7 +24,6 @@ const App = () => {
       .then((user) => {
         setLoggedIn(true);
         setCurrentUser(user);
-        // navigate(location.pathname);
       })
       .catch((err) => {
         console.error(err);

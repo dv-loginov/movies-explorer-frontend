@@ -4,17 +4,14 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 
 const MoviesCardList = ({cards}) => {
 
-  const testCards = cards.map((card, i) =>
-    <MoviesCard name={ card.name }
-                time={ card.time }
-                cover={ card.cover }
-                saved={ card.saved }
-                key={ i }/>);
+  const cardsList = cards.map((card) =>
+    <MoviesCard card={card}
+                key={ card.id }/>);
 
   return (
     <div className='movies-card-list'>
       <ul className="movies-card-list__grid">
-        { testCards }
+        { cardsList }
       </ul>
     </div>
   );

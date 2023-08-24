@@ -7,7 +7,6 @@ import ButtonAuthSubmit from '../ButtonAuthSubmit/ButtonAuthSubmit';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import { useState } from 'react';
-import MainApi from '../../utils/MainApi';
 
 const PageLogin = ({handleLogin}) => {
   const [email, setEmail] = useState('');
@@ -61,7 +60,6 @@ const PageLogin = ({handleLogin}) => {
             <div className="login__btn">
               <ButtonAuthSubmit text="Войти"/>
             </div>
-            <InputError text=''/>
           </AuthForm>
         </section>
       </main>

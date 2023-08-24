@@ -5,38 +5,44 @@ import NavAuth from '../NavAuth/NavAuth';
 import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import cover_1 from '../../images/cover_1.png';
-import cover_2 from '../../images/cover_2.png';
+import moviesApi from '../../utils/MoviesApi';
+import { cardsFilter } from '../../utils/cartsFilter';
+import { useState } from 'react';
 
 const PageMovies = () => {
-  const setTest = [
-    {
-      name: 'В погоне за Бенкси',
-      time: '27 минут',
-      cover: cover_1,
-      saved: true,
-    },
-    {
-      name: 'В погоне за Бенкси и очень длинное название',
-      time: '27 минут',
-      cover: cover_2,
-      saved: true,
-    },
-    {
-      name: 'В погоне за Бенкси',
-      time: '2 часа 45 минут',
-      cover: 'https://i0.wp.com/css-tricks.com/wp-content/uploads/2015/02/cover-and-contain.jpg?ssl=1',
-      saved: false,
-    },
-    {
-      name: 'В погоне за Бенкси',
-      time: '2 часа 45 минут',
-      cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKRzHHirDMQU_v0RHsILVKVt2O2RzpYR_EA_wiH5XaZQiOO_SBqb_8clGzD2cNXMTFoB0&usqp=CAU',
-      saved: false,
-    }
-  ];
 
-  const testCards = [...setTest, ...setTest, ...setTest];
+  const [cards, setCards] = useState([]);
+  const [filteredCards, setFilteredCard] = useState([]);
+  const [shortFilter, setShortFilter] = useState(false);
+  const [notFound, setNotFound] = useState(false);
+
+  const handleSetNotFount = (value) => {
+    setNotFound(value);
+  }
+
+  const renderMovies = ({shortFilter, searchString}) => {
+    console.log(`render shortFilter = ${ shortFilter }, searchString = ${ searchString }`);
+
+    if (cards.length === 0) {
+      moviesApi.getMovies()
+        .then((data) => {
+          setCards(data);
+          setFilteredCard(cardsFilter(data, searchString, shortFilter, handleSetNotFount));
+        })
+        .catch((err) => console.error(err));
+    } else {
+      setFilteredCard(cardsFilter(cards, searchString, shortFilter, handleSetNotFount));
+    }
+  }
+
+  const handleSetShortFilter = ({newShortFilter, searchString}) => {
+    setShortFilter(newShortFilter);
+    if (searchString.length !== 0) renderMovies({shortFilter: newShortFilter, searchString});
+  }
+
+  const handleSearchSubmit = ({searchString}) => {
+    renderMovies({shortFilter, searchString});
+  }
 
   return (
     <>
@@ -44,10 +50,18 @@ const PageMovies = () => {
         <Logo/>
         <NavAuth/>
       </Header>
+      <SearchForm handleSubmit={ handleSearchSubmit }
+                  handleShortFilter={ handleSetShortFilter }
+                  shortFilter={ shortFilter }
+      />
       <main className="movies">
-        <SearchForm/>
         <div className="movies__container">
-          <MoviesCardList cards={ testCards }/>
+          {
+            notFound
+              ? <h2>Ничего не найдено</h2>
+              : <MoviesCardList cards={ filteredCards }/>
+          }
+          {/*<MoviesCardList cards={ cards }/>*/ }
           <button className="movies__btn-next">Еще</button>
         </div>
       </main>

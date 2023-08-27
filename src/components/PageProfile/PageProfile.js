@@ -5,29 +5,41 @@ import NavAuth from '../NavAuth/NavAuth';
 import { useContext, useEffect, useState } from 'react';
 import MainApi from '../../utils/MainApi';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
+import mainApi from '../../utils/MainApi';
+import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
 const PageProfile = ({handleExit}) => {
 
+  const {values, handleChange, resetForm, errors, isValid} = useFormWithValidation();
   const currentUser = useContext(CurrentUserContext);
 
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [name, setName] = useState('');
 
   useEffect(() => {
-    setName(currentUser.name);
-    setEmail(currentUser.email);
-  }, [currentUser]);
+    // setName(currentUser.name);
+    // setEmail(currentUser.email);
+    resetForm(currentUser, {}, true);
+  }, [currentUser, resetForm]);
 
-  const handleChangeEmail = (event) => {
-    setEmail(event.target.value);
-  }
-
-  const handleChangeName = (event) => {
-    setName(event.target.value);
-  }
+  // const handleChangeEmail = (event) => {
+  //   setEmail(event.target.value);
+  // }
+  //
+  // const handleChangeName = (event) => {
+  //   setName(event.target.value);
+  // }
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
+
+
+    // mainApi.setUser({name, email})
+    //   .then((user) => {
+    //     currentUser.name = user.name;
+    //     currentUser.email = user.email;
+    //   })
+    //   .catch((err) => console.error(err));
   }
 
   const onClickExit = () => {
@@ -51,7 +63,7 @@ const PageProfile = ({handleExit}) => {
         <div className="profile__container">
           <main>
             <section className="profile__main">
-              <h1 className="profile__title">Привет, { name }!</h1>
+              <h1 className="profile__title">Привет, { currentUser.name }!</h1>
 
               <form onSubmit={ handleOnSubmit }
                     action='#'
@@ -91,11 +103,13 @@ const PageProfile = ({handleExit}) => {
             <button
               type="submit"
               form="profile-form"
-              className="profile__btn profile__btn_edit">Редактировать</button>
+              className="profile__btn profile__btn_edit">Редактировать
+            </button>
             <button
               onClick={ onClickExit }
               type="button"
-              className="profile__btn profile__btn_exit">Выйти из аккаунта</button>
+              className="profile__btn profile__btn_exit">Выйти из аккаунта
+            </button>
           </footer>
         </div>
       </div>

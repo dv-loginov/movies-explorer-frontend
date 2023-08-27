@@ -1,17 +1,26 @@
 import './SearchForm.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import InputError from '../InputError/InputError';
+import { useLocation } from 'react-router-dom';
 
-const SearchForm = ({handleSubmit, handleShortFilter, shortFilter}) => {
+const SearchForm = ({handleSubmit, handleShortFilter, shortFilter, oldSearchString}) => {
+
+  let location = useLocation();
 
   const [searchString, setSearchString] = useState('');
   const [error, setError] = useState('');
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    searchString.length === 0
-      ? setError('Нужно ввести ключевое слово')
-      : handleSubmit({searchString});
+
+    if (location.pathname === '/movies') {
+      searchString.length !== 0
+        ? handleSubmit({searchString})
+        : setError('Нужно ввести ключевое слово');
+    } else {
+      searchString.length === 0 ? handleSubmit({searchString: 'all'}) : handleSubmit({searchString});
+    }
+
   }
 
   const changeValueSearch = (event) => {
@@ -22,9 +31,12 @@ const SearchForm = ({handleSubmit, handleShortFilter, shortFilter}) => {
   }
 
   const changeValueCheckBox = (event) => {
-    // if (searchString.length === 0) setError('Нужно ввести ключевое слово');
     handleShortFilter({newShortFilter: event.target.checked, searchString});
   }
+
+  useEffect(() => {
+    setSearchString(oldSearchString);
+  }, [oldSearchString]);
 
   return (
     <section className='search'>
@@ -34,7 +46,9 @@ const SearchForm = ({handleSubmit, handleShortFilter, shortFilter}) => {
             type="text"
             className="search-form__input"
             placeholder='Фильм'
-            onChange={ changeValueSearch }/>
+            onChange={ changeValueSearch }
+            value={ searchString }
+          />
           <button type='submit' className="search-form__button">Поиск</button>
         </div>
         <InputError text={ error }/>

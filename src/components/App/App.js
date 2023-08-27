@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import PageMain from '../PageMain/PageMain';
 import PageMovies from '../PageMovies/PageMovies';
 import PageSavedMovies from '../PageSavedMovies/PageSavedMovies';
@@ -14,7 +14,6 @@ import ProtectedRoute from '../../utils/ProtectedRoute';
 
 const App = () => {
   const navigate = useNavigate();
-  // const location = useLocation();
 
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setLoggedIn] = useState(null);
@@ -64,6 +63,7 @@ const App = () => {
   const handleExit = () => {
     setLoggedIn(false);
     setCurrentUser(null);
+    localStorage.removeItem(`user-${ currentUser.email }`);
     navigate('/');
   };
 

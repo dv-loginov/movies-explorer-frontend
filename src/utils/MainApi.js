@@ -1,12 +1,13 @@
 class MainApi {
   constructor(opt) {
     this._baseUrl = opt.baseUrl;
+    this._headers = opt.headers;
   }
 
   register({name, email, password}) {
     return this._request('signup', {
       method: 'POST',
-      headers: {"Accept": "application/json", "Content-Type": "application/json"},
+      headers: this._headers,
       credentials: 'include',
       body: JSON.stringify({
         name: name,
@@ -19,7 +20,7 @@ class MainApi {
   authorize({email, password}) {
     return this._request('signin', {
       method: 'POST',
-      headers: {"Accept": "application/json", "Content-Type": "application/json"},
+      headers: this._headers,
       credentials: 'include',
       body: JSON.stringify({
         email: email,
@@ -31,18 +32,64 @@ class MainApi {
   exit() {
     return this._request('signout', {
       method: 'POST',
-      headers: {"Accept": "application/json", "Content-Type": "application/json"},
+      headers: this._headers,
       credentials: 'include',
     });
   }
 
   getUser() {
     return this._request('users/me', {
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       credentials: 'include',
+    });
+  }
+
+  setUser({name, email}) {
+    return this._request('users/me', {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        email: email,
+      })
+    });
+  }
+
+  getMovies() {
+    return this._request('movies', {
+      headers: this._headers,
+      credentials: 'include',
+    });
+  }
+
+
+  addCard({card}) {
+    return this._request('movies', {
+      method: 'POST',
+      credentials: 'include',
+      headers: this._headers,
+      body: JSON.stringify({
+        country: card.country,
+        director: card.director,
+        duration: card.duration,
+        year: card.year,
+        description: card.description,
+        image: card.image.url,
+        trailerLink: card.trailerLink,
+        thumbnail: card.trailerLink,
+        movieId: card.id,
+        nameRU: card.nameRU,
+        nameEN: card.nameEN,
+      })
+    });
+  }
+
+  delCard(id) {
+    return this._request(`movies/${ id }`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: this._headers,
     });
   }
 
@@ -61,6 +108,10 @@ class MainApi {
 
 const mainApi = new MainApi({
   baseUrl: 'http://localhost:3005',
+  headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
 });
 
 export default mainApi;

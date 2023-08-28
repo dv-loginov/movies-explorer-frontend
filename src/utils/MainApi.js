@@ -107,7 +107,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: 'http://localhost:3005',
+  baseUrl: 'http://api.dilog.nomoredomains.xyz',
   headers: {
     "Accept": "application/json",
     "Content-Type": "application/json"

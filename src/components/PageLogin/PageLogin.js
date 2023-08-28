@@ -6,24 +6,30 @@ import AuthForm from '../AuthForm/AuthForm';
 import ButtonAuthSubmit from '../ButtonAuthSubmit/ButtonAuthSubmit';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
 const PageLogin = ({handleLogin}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const {values, handleChange, resetForm, errors, isValid} = useFormWithValidation();
 
-  const handleChangeEmail = (event) => {
-    setEmail(event.target.value);
-  }
+  const [errorLogin, setErrorLogin] = useState('');
 
-  const handleChangePassword = (event) => {
-    setPassword(event.target.value);
+  const handleError = (err) => {
+    setErrorLogin(`Ошибка авторизации: ${ err }`);
   }
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    handleLogin({email, password});
+    handleLogin({
+      email: values.email || values.email,
+      password: values.password || values.password,
+      handleError
+    });
   }
+
+  useEffect(() => {
+    resetForm('', {}, false);
+  }, [resetForm]);
 
   return (
     <ContentAuthPage>
@@ -38,27 +44,31 @@ const PageLogin = ({handleLogin}) => {
               label='E-mail'
               id='email'
               name='email'
-              onChange={ handleChangeEmail }
+              onChange={ handleChange }
               placeholder='Почта пользователя'
               required={ 'required' }
-              value={ email || '' }
+              value={ values.email || '' }
             />
-            <InputError text=' '/>
+            <InputError text={ errors.email }/>
             <Input
               type='password'
               label='Пароль'
               id='password'
               name='password'
-              onChange={ handleChangePassword }
+              onChange={ handleChange }
               placeholder='Пороль пользователя'
               min='8'
               max='40'
               required={ 'required' }
-              value={ password }
+              value={ values.password || '' }
             />
-            <InputError text=' '/>
+            <InputError text={ errors.password }/>
             <div className="login__btn">
-              <ButtonAuthSubmit text="Войти"/>
+              <InputError text={ errorLogin }/>
+              <ButtonAuthSubmit
+                text="Войти"
+                isValid={ isValid }
+              />
             </div>
           </AuthForm>
         </section>

@@ -6,37 +6,39 @@ import AuthForm from '../AuthForm/AuthForm';
 import Input from '../Input/Input';
 import InputError from '../InputError/InputError';
 import ButtonAuthSubmit from '../ButtonAuthSubmit/ButtonAuthSubmit';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MainApi from '../../utils/MainApi';
+import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
 const PageRegister = ({handleRegister}) => {
+  const {values, handleChange, resetForm, errors, isValid} = useFormWithValidation();
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleChangeName = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleChangeEmail = (event) => {
-    setEmail(event.target.value);
-  }
-
-  const handleChangePassword = (event) => {
-    setPassword(event.target.value);
-  }
+  const [errorRegister, setErrorRegister] = useState('');
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    MainApi.register({name, email, password,})
+    MainApi.register(
+      {
+        name: values.name || values.name,
+        email: values.email || values.email,
+        password: values.password || values.password,
+      }
+    )
       .then(() => {
-        handleRegister({email, password});
+        handleRegister({
+          email: values.email || values.email,
+          password: values.password || values.password
+        });
       })
       .catch((err) => {
+        setErrorRegister(`Ошибка регистрации: ${ err }`)
         console.error(err);
       })
   }
+
+  useEffect(() => {
+    resetForm('', {}, false);
+  }, [resetForm]);
 
   return (
     <ContentAuthPage>
@@ -50,41 +52,43 @@ const PageRegister = ({handleRegister}) => {
               type='text'
               label='Имя'
               id='userName'
-              name='userName'
-              onChange={ handleChangeName }
+              name='name'
+              onChange={ handleChange }
               placeholder='Имя пользователя'
               min='2'
               max='30'
               required={ null }
-              value={ name || '' }
+              value={ values.name || '' }
             />
-            <InputError text=' '/>
+            <InputError text={ errors.name }/>
             <Input
               type='email'
               label='E-mail'
               id='email'
               name='email'
-              onChange={ handleChangeEmail }
+              onChange={ handleChange }
               placeholder='Почта пользователя'
               required={ 'required' }
-              value={ email || '' }
+              value={ values.email || '' }
             />
-            <InputError text=' '/>
+            <InputError text={ errors.email }/>
             <Input
               type='password'
               label='Пароль'
               id='password'
               name='password'
-              onChange={ handleChangePassword }
+              onChange={ handleChange }
               placeholder='Пароль пользователя'
               min='8'
               required={ 'required' }
-              value={ password }
+              value={ values.password || '' }
             />
-            <InputError text=' '/>
+            <InputError text={ errors.pattern }/>
             <div className="register__btn">
-              <InputError text=' '/>
-              <ButtonAuthSubmit text="Зарегистрироваться"/>
+              <InputError text={ errorRegister }/>
+              <ButtonAuthSubmit
+                text="Зарегистрироваться"
+                isValid={ isValid }/>
             </div>
           </AuthForm>
         </section>

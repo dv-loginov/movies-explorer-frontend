@@ -48,7 +48,7 @@ const App = () => {
     handleLogin({email, password});
   }
 
-  const handleLogin = ({email, password}) => {
+  const handleLogin = ({email, password, handleError}) => {
     MainApi.authorize({email, password})
       .then((user) => {
         setLoggedIn(true);
@@ -56,6 +56,7 @@ const App = () => {
         navigate('/movies');
       })
       .catch((err) => {
+        handleError(err);
         console.error(err);
       })
   }

@@ -35,13 +35,8 @@
 
 .input__field:invalid {
   color: #EE3465;
+  border-bottom: solid 1px #EE3465;
 }
-
-/*@media screen and (max-width: 410px) {*/
-/*  .input {*/
-/*    max-width: 260px;*/
-/*  }*/
-/*}*/
 
 
 

@@ -2,44 +2,41 @@ import './PageProfile.css';
 import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
 import NavAuth from '../NavAuth/NavAuth';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import MainApi from '../../utils/MainApi';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
 import { useFormWithValidation } from '../../utils/useFormWithValidation';
+import InputError from '../InputError/InputError';
+import { useNavigate } from 'react-router-dom';
 
 const PageProfile = ({handleExit}) => {
+  const navigate = useNavigate();
 
   const {values, handleChange, resetForm, errors, isValid} = useFormWithValidation();
+
   const currentUser = useContext(CurrentUserContext);
 
-  // const [email, setEmail] = useState('');
-  // const [name, setName] = useState('');
+  const isNameNotChange = (currentUser.name === (values.userName || values.name));
+  const isEmailNotChange = (currentUser.email === (values.userEmail || values.email));
+  const isDisable = (isValid && (!isNameNotChange || !isEmailNotChange));
 
   useEffect(() => {
-    // setName(currentUser.name);
-    // setEmail(currentUser.email);
     resetForm(currentUser, {}, true);
   }, [currentUser, resetForm]);
 
-  // const handleChangeEmail = (event) => {
-  //   setEmail(event.target.value);
-  // }
-  //
-  // const handleChangeName = (event) => {
-  //   setName(event.target.value);
-  // }
-
   const handleOnSubmit = (event) => {
     event.preventDefault();
-
-
-    // mainApi.setUser({name, email})
-    //   .then((user) => {
-    //     currentUser.name = user.name;
-    //     currentUser.email = user.email;
-    //   })
-    //   .catch((err) => console.error(err));
+    mainApi.setUser({
+      name: values.userName || values.name,
+      email: values.userEmail || values.email
+    })
+      .then((user) => {
+        currentUser.name = user.name;
+        currentUser.email = user.email;
+        navigate('/profile');
+      })
+      .catch((err) => console.error(err));
   }
 
   const onClickExit = () => {
@@ -70,6 +67,7 @@ const PageProfile = ({handleExit}) => {
                     className="profile__form"
                     name="profileForm"
                     id="profile-form">
+                <InputError text={ errors.userName }/>
                 <div className="profile__user-name">
                   <label className="profile__label" htmlFor="user-name">Имя</label>
                   <input
@@ -80,8 +78,9 @@ const PageProfile = ({handleExit}) => {
                     placeholder="Имя пользователя"
                     minLength="2"
                     maxLength="30"
-                    onChange={ handleChangeName }
-                    value={ name }/>
+                    onChange={ handleChange }
+                    value={ values.userName || currentUser.name }
+                  />
                 </div>
                 <div className="profile__user-email">
                   <label className="profile__label" htmlFor="user-email">E-mail</label>
@@ -93,9 +92,11 @@ const PageProfile = ({handleExit}) => {
                     placeholder="Почта пользователя"
                     minLength="2"
                     maxLength="30"
-                    onChange={ handleChangeEmail }
-                    value={ email }/>
+                    onChange={ handleChange }
+                    required
+                    value={ values.userEmail || currentUser.email }/>
                 </div>
+                <InputError text={ errors.userEmail }/>
               </form>
             </section>
           </main>
@@ -103,7 +104,8 @@ const PageProfile = ({handleExit}) => {
             <button
               type="submit"
               form="profile-form"
-              className="profile__btn profile__btn_edit">Редактировать
+              disabled={ !isDisable }
+              className={ `profile__btn profile__btn_edit ${ isDisable ? '' : 'profile__btn_disable' }` }>Редактировать
             </button>
             <button
               onClick={ onClickExit }

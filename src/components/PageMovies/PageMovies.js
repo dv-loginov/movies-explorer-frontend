@@ -11,9 +11,20 @@ import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
 import Preloader from '../Preloader/Preloader';
+import { useMediaQuery } from '../../utils/useMediaQuery';
+import {
+  LG_INITIAL_CARD_COUNT,
+  LG_ROW_CARD_COUNT,
+  MD_INITIAL_CARD_COUNT,
+  MD_ROW_CARD_COUNT, SM_INITIAL_CARD_COUNT,
+  SM_ROW_CARD_COUNT
+} from '../../utils/const';
 
 const PageMovies = () => {
   const currentUser = useContext(CurrentUserContext);
+
+  const isDesktop = useMediaQuery("(min-width: 1280px)");
+  const isTablet = useMediaQuery("(min-width: 768px)");
 
   const [cards, setCards] = useState([]);
   const [filteredCards, setFilteredCard] = useState([]);
@@ -24,37 +35,58 @@ const PageMovies = () => {
   const [savedCards, setSavedCards] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
+  const initialCardCount = isDesktop
+    ? LG_INITIAL_CARD_COUNT
+    : isTablet
+      ? MD_INITIAL_CARD_COUNT
+      : SM_INITIAL_CARD_COUNT;
+
+  const [visibleCardCount, setVisibleCardCount] = useState(initialCardCount);
+
+  const calculateCardCount = () => {
+    if (isDesktop) {
+      return setVisibleCardCount(visibleCardCount + LG_ROW_CARD_COUNT);
+    }
+
+    if (isTablet) {
+      return setVisibleCardCount(visibleCardCount + MD_ROW_CARD_COUNT);
+    }
+
+    setVisibleCardCount(visibleCardCount + SM_ROW_CARD_COUNT);
+  };
+
   const handleSetNotFount = (value) => {
     setNotFound(value);
   }
 
   const renderMovies = ({shortFilter, searchString}) => {
-    // console.log(`render shortFilter = ${ shortFilter }, searchString = ${ searchString }`);
     if (cards.length === 0) {
       setLoading(true);
       moviesApi.getMovies()
         .then((data) => {
           setCards(data);
-          setFilteredCard(
-            cardsFilter(
-              data,
-              searchString,
-              shortFilter,
-              handleSetNotFount,
-              savedCards,
-              currentUser));
+          const fcard = cardsFilter(
+            data,
+            searchString,
+            shortFilter,
+            handleSetNotFount,
+            savedCards,
+            currentUser);
+          setIsMore(fcard.length > initialCardCount);
+          setFilteredCard(fcard);
         })
         .catch((err) => console.error(err))
         .finally(() => setLoading(false));
     } else {
-      setFilteredCard(
-        cardsFilter(
-          cards,
-          searchString,
-          shortFilter,
-          handleSetNotFount,
-          savedCards,
-          currentUser));
+      const fcard = cardsFilter(
+        cards,
+        searchString,
+        shortFilter,
+        handleSetNotFount,
+        savedCards,
+        currentUser);
+      setIsMore(fcard.length > initialCardCount);
+      setFilteredCard(fcard);
     }
   }
 
@@ -96,6 +128,11 @@ const PageMovies = () => {
     ).catch((err) => console.error(err));
   }
 
+  const handleClickMore = () => {
+    calculateCardCount();
+    if (filteredCards.length<=visibleCardCount) setIsMore(false);
+  }
+
   useEffect(() => {
     if (localStorage.getItem(`user-${ currentUser.email }`) !== null) {
       setLoading(true);
@@ -105,6 +142,7 @@ const PageMovies = () => {
           setShortFilter(short);
           setSearchString(string);
           setSavedCards(savedCards);
+          setIsMore(cards.length > initialCardCount);
           setFilteredCard(setFlagSaved(cards, savedCards));
         })
         .catch((err) => console.error(err))
@@ -138,11 +176,11 @@ const PageMovies = () => {
             : notFound
               ? <h2>Ничего не найдено</h2>
               : <MoviesCardList
-                cards={ filteredCards }
+                cards={ filteredCards.slice(0, visibleCardCount) }
                 handleAddCard={ handleAddCard }
                 handleDelCard={ handleDelCard }/>
           }
-          { isMore && <button className="movies__btn-next">Еще</button> }
+          { isMore && <button onClick={ handleClickMore } className="movies__btn-next">Еще</button> }
         </div>
       </main>
       <Footer/>

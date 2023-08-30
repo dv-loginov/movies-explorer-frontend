@@ -1,4 +1,4 @@
-const SHORTFILM = 40;
+import { SHORT_FILM_LENGTH } from './const';
 
 export function cardsFilter(
   cards,
@@ -71,7 +71,7 @@ export const nameFilter = (cards, searchString) => {
 
 export const durationFilter = (cards) => {
   return cards.filter((card) => {
-    return card.duration <= SHORTFILM;
+    return card.duration <= SHORT_FILM_LENGTH;
   });
 }
 
@@ -79,8 +79,8 @@ const generalization = (str) => {
   return String(str).toLowerCase().trim();
 }
 
-export const duration=(duration)=>{
-  const hours = Math.trunc(duration/60);
+export const duration = (duration) => {
+  const hours = Math.trunc(duration / 60);
   const minutes = duration % 60;
-  return `${hours>0?`${hours}ч`:''} ${minutes>0?`${minutes}мин`:''}`; // hours + 'ч ' + minutes + 'мин';
+  return `${ hours > 0 ? `${ hours }ч` : '' } ${ minutes > 0 ? `${ minutes }мин` : '' }`; // hours + 'ч ' + minutes + 'мин';
 }

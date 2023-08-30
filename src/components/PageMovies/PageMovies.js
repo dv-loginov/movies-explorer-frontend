@@ -23,8 +23,8 @@ import {
 const PageMovies = () => {
   const currentUser = useContext(CurrentUserContext);
 
-  const isDesktop = useMediaQuery("(min-width: 1280px)");
-  const isTablet = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 1138px)");
+  const isTablet = useMediaQuery("(min-width: 740px)");
 
   const [cards, setCards] = useState([]);
   const [filteredCards, setFilteredCard] = useState([]);
@@ -35,6 +35,12 @@ const PageMovies = () => {
   const [savedCards, setSavedCards] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
+  const cardColumnCount = isDesktop
+    ? LG_ROW_CARD_COUNT
+    : isTablet
+      ? MD_ROW_CARD_COUNT
+      : SM_ROW_CARD_COUNT;
+
   const initialCardCount = isDesktop
     ? LG_INITIAL_CARD_COUNT
     : isTablet
@@ -43,16 +49,19 @@ const PageMovies = () => {
 
   const [visibleCardCount, setVisibleCardCount] = useState(initialCardCount);
 
+  const roundedVisibleCardCount =
+    Math.floor(visibleCardCount / cardColumnCount) * cardColumnCount;
+
   const calculateCardCount = () => {
-    if (isDesktop) {
-      return setVisibleCardCount(visibleCardCount + LG_ROW_CARD_COUNT);
-    }
+    const cardColumnCount = isDesktop
+      ? LG_ROW_CARD_COUNT
+      : isTablet
+        ? MD_ROW_CARD_COUNT
+        : SM_ROW_CARD_COUNT*2;
 
-    if (isTablet) {
-      return setVisibleCardCount(visibleCardCount + MD_ROW_CARD_COUNT);
-    }
+    setVisibleCardCount(visibleCardCount + cardColumnCount);
 
-    setVisibleCardCount(visibleCardCount + SM_ROW_CARD_COUNT);
+    if (filteredCards.length <= visibleCardCount+cardColumnCount) setIsMore(false);
   };
 
   const handleSetNotFount = (value) => {
@@ -130,7 +139,6 @@ const PageMovies = () => {
 
   const handleClickMore = () => {
     calculateCardCount();
-    if (filteredCards.length<=visibleCardCount) setIsMore(false);
   }
 
   useEffect(() => {
@@ -176,7 +184,7 @@ const PageMovies = () => {
             : notFound
               ? <h2>Ничего не найдено</h2>
               : <MoviesCardList
-                cards={ filteredCards.slice(0, visibleCardCount) }
+                cards={ filteredCards.slice(0, roundedVisibleCardCount) }
                 handleAddCard={ handleAddCard }
                 handleDelCard={ handleDelCard }/>
           }

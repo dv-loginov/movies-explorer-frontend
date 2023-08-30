@@ -28,12 +28,14 @@ const MoviesCard = ({card, handleAddCard, handleDelCard}) => {
 
   return (
     <li className='movies-card'>
-      <div className="movies-card__header">
-        <div className="movies-card__name" title={ card.nameRU }>{ card.nameRU }</div>
-        <div className="movies-card__time" title={ duration(card.duration) }>{ duration(card.duration) }</div>
-      </div>
-      <img src={ `https://api.nomoreparties.co${ img }` } alt={ `обложка фильма ${ card.nameRU }` }
-           className="movies-card__cover"/>
+      <a className='movies-card__link' target="_blank" rel="noreferrer" href={ card.trailerLink }>
+        <div className="movies-card__header">
+          <div className="movies-card__name" title={ card.nameRU }>{ card.nameRU }</div>
+          <div className="movies-card__time" title={ duration(card.duration) }>{ duration(card.duration) }</div>
+        </div>
+        <img src={ `https://api.nomoreparties.co${ img }` } alt={ `обложка фильма ${ card.nameRU }` }
+             className="movies-card__cover"/>
+      </a>
       <button
         type='button'
         onClick={ isSaved ? handleDel : handleAdd }

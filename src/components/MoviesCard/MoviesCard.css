@@ -16,6 +16,10 @@
   justify-content: space-between;
 }
 
+.movies-card__link {
+  text-decoration: none;
+}
+
 .movies-card__name,
 .movies-card__time {
   white-space: nowrap;

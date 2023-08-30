@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import PageMain from '../PageMain/PageMain';
 import PageMovies from '../PageMovies/PageMovies';
 import PageSavedMovies from '../PageSavedMovies/PageSavedMovies';
@@ -11,6 +11,7 @@ import Page404 from '../Page404/Page404';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import MainApi from '../../utils/MainApi';
 import ProtectedRoute from '../../utils/ProtectedRoute';
+import Preloader from '../Preloader/Preloader';
 
 const App = () => {
   const navigate = useNavigate();
@@ -68,6 +69,10 @@ const App = () => {
     navigate('/');
   };
 
+  if (isLoggedIn === null) {
+    return <Preloader/>;
+  }
+
   return (
     <CurrentUserContext.Provider value={ currentUser }>
       <div className='app'>
@@ -76,32 +81,38 @@ const App = () => {
 
           <Route
             path='/signin'
-            element={ <PageLogin handleLogin={ handleLogin }/>
+            element={
+              !isLoggedIn
+                ? <PageLogin handleLogin={ handleLogin }/>
+                : <Navigate to="/" replace/>
             }/>
 
           <Route
             path='/signup'
             element={
-              <PageRegister handleRegister={ handleRegister }/>
+              !isLoggedIn
+                ? <PageRegister handleRegister={ handleRegister }/>
+                : <Navigate to="/" replace/>
             }/>
+          }/>
 
           <Route path='/movies' element={
             <ProtectedRoute
-              element={ <PageMovies/> }
+              component={ <PageMovies isLoggedIn={ isLoggedIn }/> }
               isLoggedIn={ isLoggedIn }
             />
           }/>
 
           <Route path='/saved-movies' element={
             <ProtectedRoute
-              element={ <PageSavedMovies/> }
+              component={ <PageSavedMovies/> }
               isLoggedIn={ isLoggedIn }
             />
           }/>
 
           <Route path='/profile' element={
             <ProtectedRoute
-              element={ <PageProfile handleExit={ handleExit }/> }
+              component={ <PageProfile handleExit={ handleExit }/> }
               isLoggedIn={ isLoggedIn }
             />
           }/>

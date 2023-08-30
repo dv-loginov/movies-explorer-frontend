@@ -9,4 +9,4 @@ api.dilog.nomoredomains.xyz
 dilog.nomoredomains.xyz 
 
 ### pul request
-https://github.com/dv-loginov/movies-explorer-frontend/compare/level-3?expand=1
+https://github.com/dv-loginov/movies-explorer-frontend/pull/2

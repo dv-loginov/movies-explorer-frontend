@@ -32,6 +32,7 @@ const PageProfile = ({handleExit}) => {
       email: values.userEmail || values.email
     })
       .then((user) => {
+        alert('Профиль обнавлен')
         currentUser.name = user.name;
         currentUser.email = user.email;
         navigate('/profile');

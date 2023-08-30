@@ -26,9 +26,8 @@ const PageSavedMovies = () => {
   }
 
   const handleSearchSubmit = ({searchString}) => {
-    searchString === 'all'
-      ? setFilteredCard(cards)
-      : setFilteredCard(nameFilter(filteredCards, searchString));
+    const fcards = nameFilter(cards, searchString);
+    shortFilter ? setFilteredCard(durationFilter(fcards)) : setFilteredCard(fcards);
   }
 
   const handleSetShortFilter = ({newShortFilter, searchString}) => {

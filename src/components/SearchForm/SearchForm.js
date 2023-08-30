@@ -13,14 +13,9 @@ const SearchForm = ({handleSubmit, handleShortFilter, shortFilter, oldSearchStri
   const onSubmitForm = (event) => {
     event.preventDefault();
 
-    if (location.pathname === '/movies') {
       searchString.length !== 0
         ? handleSubmit({searchString})
         : setError('Нужно ввести ключевое слово');
-    } else {
-      searchString.length === 0 ? handleSubmit({searchString: 'all'}) : handleSubmit({searchString});
-    }
-
   }
 
   const changeValueSearch = (event) => {

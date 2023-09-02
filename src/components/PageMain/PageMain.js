@@ -9,32 +9,33 @@ import SectionAboutMe from '../SectionAboutMe/SectionAboutMe';
 import SectionPortfolio from '../SectionPortfolio/SectionPortfolio';
 import Logo from '../Logo/Logo';
 import NavNoAuth from '../NavNoAuth/NavNoAuth';
+import NavAuth from '../NavAuth/NavAuth';
 
-const PageMain = () => {
+const PageMain = ({isLoggedIn}) => {
   return (
     <>
       <Header type='landing'>
-        <Logo />
-        <NavNoAuth />
+        <Logo/>
+        { isLoggedIn ? <NavAuth/> : <NavNoAuth/> }
       </Header>
       <main className='page-main'>
-        <Section name = 'promo'>
-          <SectionPromo />
+        <Section name='promo'>
+          <SectionPromo/>
         </Section>
-        <Section name = 'about-project'>
-          <SectionAboutProject />
+        <Section name='about-project'>
+          <SectionAboutProject/>
         </Section>
-        <Section name = 'techs'>
-          <SectionTechs />
+        <Section name='techs'>
+          <SectionTechs/>
         </Section>
-        <Section name = 'about-me'>
-          <SectionAboutMe />
+        <Section name='about-me'>
+          <SectionAboutMe/>
         </Section>
-        <Section name = 'portfolio'>
-          <SectionPortfolio />
+        <Section name='portfolio'>
+          <SectionPortfolio/>
         </Section>
       </main>
-      <Footer />
+      <Footer/>
     </>
   )
     ;

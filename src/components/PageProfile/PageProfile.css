@@ -31,7 +31,7 @@
 }
 
 .profile__form {
-  margin-top: 123px;
+  margin-top: 111px;
 }
 
 .profile__user-name,
@@ -76,7 +76,6 @@
 .profile__input:focus {
   outline: none;
   border-bottom: solid 1px #3DDC84;
-  /*#4285F4;*/
 }
 
 .profile__input:active {
@@ -85,42 +84,42 @@
 
 .profile__input:invalid {
   color: #EE3465;
+  border-bottom: solid 1px #EE3465;
 }
 
 .profile__footer {
-  text-align: center;
-  margin-top: 215px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 203px;
 }
 
-.profile__link,
 .profile__btn {
   transition: opacity 250ms ease-out;
   font-size: 13px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background-color: #202020;
+  margin-bottom: 17px;
 }
 
-.profile__link {
-  display: block;
-  text-decoration: none;
+.profile__btn_exit {
   color: #EE3465;
   font-weight: 500;
 }
 
-.profile__btn {
+.profile__btn_edit {
   color: #FFF;
   font-weight: 400;
-  border: none;
-  padding: 0;
-  background-color: #202020;
-  margin-bottom: 17px;
-  cursor: pointer;
 }
 
 .profile__btn:hover {
   opacity: .8;
 }
 
-.profile__link:hover {
-  opacity: .7;
+.profile__btn_disable{
+  cursor: not-allowed;
+  color: #8B8B8B;
 }
 
 @media screen and (max-width: 768px) {
@@ -135,11 +134,11 @@
   }
 
   .profile__form {
-    margin-top: 96px;
+    margin-top: 84px;
   }
 
   .profile__footer {
-    margin-top: 206px;
+    margin-top: 194px;
     padding-bottom: 74px;
   }
 }
@@ -165,7 +164,7 @@
   }
 
   .profile__form {
-    margin-top: 80px;
+    margin-top: 68px;
   }
 
   .profile__footer {

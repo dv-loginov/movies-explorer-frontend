@@ -5,32 +5,57 @@ import NavAuth from '../NavAuth/NavAuth';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
-import cover_1 from '../../images/cover_1.png';
-import cover_2 from '../../images/cover_2.png';
+import { useEffect, useState } from 'react';
+import mainApi from '../../utils/MainApi';
+import { durationFilter, nameFilter } from '../../utils/cartsFilter';
+import Preloader from '../Preloader/Preloader';
 
 const PageSavedMovies = () => {
-  const setTest = [
-    {
-      name: 'В погоне за Бенкси',
-      time: '27 минут',
-      cover: cover_1,
-      saved: true,
-    },
-    {
-      name: 'В погоне за Бенкси и очень длинное название',
-      time: '27 минут',
-      cover: cover_2,
-      saved: true,
-    },
-    {
-      name: 'В погоне за Бенкси',
-      time: '2 часа 45 минут',
-      cover: 'https://i0.wp.com/css-tricks.com/wp-content/uploads/2015/02/cover-and-contain.jpg?ssl=1',
-      saved: true,
-    },
-  ];
 
-  const testCards = [...setTest];
+  const [cards, setCards] = useState([]);
+  const [filteredCards, setFilteredCard] = useState([]);
+  const [shortFilter, setShortFilter] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+
+  const handleDelCard = (card) => {
+    mainApi.delCard(card.movieId).then(() => {
+        setCards((state) => state.filter((c) => c.movieId !== card.movieId))
+        setFilteredCard((state) => state.filter((c) => c.movieId !== card.movieId))
+      }
+    ).catch((err) => console.error(err));
+  }
+
+  const handleSearchSubmit = ({searchString}) => {
+    const fcards = nameFilter(cards, searchString);
+    shortFilter ? setFilteredCard(durationFilter(fcards)) : setFilteredCard(fcards);
+  }
+
+  const handleSetShortFilter = ({newShortFilter, searchString}) => {
+    setShortFilter(newShortFilter);
+    if (searchString === '') {
+      newShortFilter
+        ? setFilteredCard(durationFilter(filteredCards))
+        : setFilteredCard(cards);
+    } else {
+      if (newShortFilter) {
+        setFilteredCard(durationFilter(filteredCards))
+      } else {
+        setFilteredCard(nameFilter(cards, searchString));
+      }
+    }
+  }
+
+
+  useEffect(() => {
+    setLoading(true);
+    mainApi.getMovies()
+      .then((savedCards) => {
+        setCards(savedCards);
+        setFilteredCard(savedCards);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <>
@@ -39,9 +64,18 @@ const PageSavedMovies = () => {
         <NavAuth/>
       </Header>
       <main className="saved-movies">
-        <SearchForm/>
+        <SearchForm handleSubmit={ handleSearchSubmit }
+                    handleShortFilter={ handleSetShortFilter }
+                    shortFilter={ shortFilter }
+                    oldSearchString={ '' }
+        />
         <div className="saved-movies__container">
-          <MoviesCardList cards={ testCards }/>
+          {
+            isLoading
+              ? <Preloader/>
+              : filteredCards.length > 0
+                ? <MoviesCardList cards={ filteredCards } handleDelCard={ handleDelCard }/>
+                : <h1>Сохраненных файлов нет</h1> }
         </div>
       </main>
       <Footer/>

@@ -10,6 +10,10 @@
   cursor: pointer;
   transition: opacity 250ms ease-out;
 }
+.button-auth-submit_disable {
+  cursor: not-allowed;
+  background: #424242;
+}
 
 .button-auth-submit:hover{
   opacity: .8;

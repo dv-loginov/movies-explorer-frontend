@@ -2,19 +2,20 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 
-const MoviesCardList = ({cards}) => {
+const MoviesCardList = ({cards, handleAddCard, handleDelCard}) => {
 
-  const testCards = cards.map((card, i) =>
-    <MoviesCard name={ card.name }
-                time={ card.time }
-                cover={ card.cover }
-                saved={ card.saved }
-                key={ i }/>);
+  // console.log(cards);
+
+  const cardsList = cards.map((card) =>
+    <MoviesCard card={ card }
+                key={ card.id||card._id }
+                handleAddCard={ handleAddCard }
+                handleDelCard={ handleDelCard }/>);
 
   return (
     <div className='movies-card-list'>
       <ul className="movies-card-list__grid">
-        { testCards }
+        { cardsList }
       </ul>
     </div>
   );
